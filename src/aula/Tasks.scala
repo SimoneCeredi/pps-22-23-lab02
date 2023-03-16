@@ -95,7 +95,7 @@ object Tasks extends App:
 
   @tailrec
   def gcd(a: Int, b: Int): Int = (a, b) match
-    case (f, s) if f > s && s != 0 => gcd(s, f % s)
+    case (f, s) if s != 0 => gcd(s, f % s)
     case (f, _) => f
 
   println(gcd(36, 25))
@@ -116,10 +116,10 @@ object Tasks extends App:
       case Rectangle(b, h) => 2 * (b + h)
       case Circle(r) => math.Pi * r
 
-    def contains(shape: Shape, point: (Double, Double)): Boolean = shape match
-      case Square(s) => point._1 <= s && point._2 <= s
-      case Rectangle(b, h) => point._1 <= b && point._2 <= h
-      case Circle(r) => math.sqrt((BigDecimal(point._1).pow(2) + BigDecimal(point._2).pow(2)).doubleValue) <= r
+    def contains(shape: Shape, point: (Double, Double)): Boolean = (shape, point) match
+      case (Square(s), (px, py)) => px <= s && py <= s
+      case (Rectangle(b, h), (px, py)) => px <= b && py <= h
+      case (Circle(r), (px, py)) => math.sqrt((BigDecimal(px).pow(2) + BigDecimal(py).pow(2)).doubleValue) <= r
 
   import Shape.*
 
