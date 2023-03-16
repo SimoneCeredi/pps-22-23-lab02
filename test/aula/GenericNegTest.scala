@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test
 
 class GenericNegTest:
 
+  // Task 3c) tests
+
   import Tasks.genericNeg;
   val intPositive: Int => Boolean = _ >= 0
   val stringEmpty: String => Boolean = _ == ""
